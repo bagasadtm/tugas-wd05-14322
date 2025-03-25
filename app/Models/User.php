@@ -18,8 +18,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nama',
+        'alamat',
+        'no_hp',
         'email',
+        'role',
         'password',
     ];
 
@@ -38,11 +41,15 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+     // Relasi ke tabel periksas sebagai pasien
+     public function pemeriksaanSebagaiPasien()
+     {
+         return $this->hasMany(Periksa::class, 'id_pasien');
+     }
+
+     // Relasi ke tabel periksas sebagai dokter
+    public function pemeriksaanSebagaiDokter()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Periksa::class, 'id_dokter');
     }
 }
