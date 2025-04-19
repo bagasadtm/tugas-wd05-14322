@@ -8,7 +8,7 @@ use App\Models\Periksa;
 
 /* Halaman Awal */
 Route::get('/', function () {
-    return view('landingpage');
+    return view('landing');
 });
 
 /* Login, Register & Logout*/
@@ -18,12 +18,16 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Dashboard umum (bisa kamu kembangkan lagi)
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/tables', [DashboardController::class, 'tables']);
+// // Dashboard umum (bisa kamu kembangkan lagi)
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/tables', [DashboardController::class, 'tables']);
 
 /* Setelah Login (Dibatasi auth) */
 Route::middleware('auth')->group(function () {
+
+     // Dashboard umum (bisa kamu kembangkan lagi)
+     Route::get('/dashboard', [DashboardController::class, 'index']);
+     Route::get('/tables', [DashboardController::class, 'tables']);
 
     Route::middleware('role:pasien')->group(function () {
         /* --------- Pasien --------- */
