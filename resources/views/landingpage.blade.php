@@ -613,10 +613,7 @@
                     <a href={{ route('register') }} class="btn btn-outline">Register</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="https://i.pinimg.com/736x/ee/db/28/eedb285489032642733b6cfaef94bdd5.jpg" alt="Hero Image"
-                    width="75%">
-            </div>
+            
         </div>
     </section>
 
